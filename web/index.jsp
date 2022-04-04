@@ -14,7 +14,7 @@
     </head>
     <body>
         <h1>Información Credito</h1>
-        <form action="./CreditoServlet" method="GET">
+        <form action="${pageContext.request.contextPath}/CreditoServlet" method="GET">
             <table>
                 <tr>
                     <th> Credito ID</th>

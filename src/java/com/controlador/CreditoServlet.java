@@ -23,21 +23,21 @@ public class CreditoServlet extends HttpServlet {
     @EJB
     private CreditoDAOLocal creditoDAO;
 
+    String vistaEditarCredito = "vistas/editarCredito.jsp";
+    String vistaPlanDePago = "vistas/planDePago.jsp";
+    
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
+     * 
+     * @param request
+     * @param response
+     * @return Instancia de la clase Credito
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException if an I/O error occurs 
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    private Credito crearCreditoDesdeFormulario(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-
+        
         String nombreCliente = request.getParameter("nombreCliente");
-
         String montoInicialStr = request.getParameter("montoInicial");
         double montoInicial = 0;
         if (montoInicialStr != null && !montoInicialStr.equals("")) {
@@ -57,6 +57,23 @@ public class CreditoServlet extends HttpServlet {
         }
         
         Credito credito = new Credito(nombreCliente, montoInicial, plazoMeses, tasaInteres);
+        return credito;
+    }
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+
+        Credito credito = crearCreditoDesdeFormulario(request, response);
         String action=request.getParameter("action");
         if ("Add".equalsIgnoreCase(action)) {
             creditoDAO.addCredito(credito);
