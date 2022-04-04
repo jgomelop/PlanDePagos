@@ -42,7 +42,6 @@
                         <input type="submit" name="action" value="Edit"/>
                         <input type="submit" name="action" value="Delete"/>
                         <input type="submit" name="action" value="Search"/>
-
                     </td>
                 </tr>
 
@@ -56,6 +55,10 @@
             <th>Monto Inicial</th>
             <th>Plazo Meses</th>
             <th> Tasa Interes </th>
+            <th> Detalles </th>
+            <th> Editar </th>
+            <th> Eliminar</th>
+
 
             <c:forEach items="${allCreditos}" var="cred">
                 <tr>
@@ -63,9 +66,13 @@
                     <td>${cred.nombreCliente}</td>
                     <td>${cred.montoInicial}</td>
                     <td>${cred.plazoMeses}</td>
-                    <td>${cred.tasaInteres}</td>
+                    <td>${cred.tasaInteres} </td>
+                    <td> Detalles</td>
+                    <td> Editar </td>
+                    <td> Eliminar </td>
                 </tr>
             </c:forEach>
         </table>
+        
     </body>
 </html>
