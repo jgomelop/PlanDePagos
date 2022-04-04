@@ -55,9 +55,7 @@
             <th>Monto Inicial</th>
             <th>Plazo Meses</th>
             <th> Tasa Interes </th>
-            <th> Detalles </th>
-            <th> Editar </th>
-            <th> Eliminar</th>
+            <th> Operaciones </th>
 
 
             <c:forEach items="${allCreditos}" var="cred">
@@ -67,12 +65,17 @@
                     <td>${cred.montoInicial}</td>
                     <td>${cred.plazoMeses}</td>
                     <td>${cred.tasaInteres} </td>
-                    <td> Detalles</td>
-                    <td> Editar </td>
-                    <td> Eliminar </td>
+                    <td> 
+                        <a href="#"> Detalles </a>
+                        <a href="#"> Editar </a> 
+                        <form action="${pageContext.request.contextPath}/CreditoServlet" method="get">
+                            <input type="submit" name="action" value="Eliminar" />
+                            <input type="hidden" name="credIdToDelete" value="${cred.idCredito}" />
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
         </table>
-        
+
     </body>
 </html>

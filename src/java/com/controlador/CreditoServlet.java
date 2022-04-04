@@ -8,7 +8,6 @@ package com.controlador;
 import com.dao.CreditoDAOLocal;
 import com.modelo.Credito;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Juan Pablo
  */
-public class AddCreditoServlet extends HttpServlet {
+public class CreditoServlet extends HttpServlet {
 
     @EJB
     private CreditoDAOLocal creditoDAO;
@@ -65,8 +64,11 @@ public class AddCreditoServlet extends HttpServlet {
         } else if ("Edit".equalsIgnoreCase(action)) {
             creditoDAO.editCredito(credito); 
 
-        } else if ("Delete".equalsIgnoreCase(action)) {
-            creditoDAO.deleteCredito(credito.getIdCredito());
+        } else if ("Eliminar".equalsIgnoreCase(action)) {
+            
+            String creditoIdStr = request.getParameter("credIdToDelete");
+            int creditoId = Integer.parseInt(creditoIdStr);
+            creditoDAO.deleteCredito(creditoId);
 
         } else if ("Search".equalsIgnoreCase(action)) {
             credito = creditoDAO.getCredito(credito.getIdCredito());
