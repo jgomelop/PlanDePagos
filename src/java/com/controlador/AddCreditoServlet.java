@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Juan Pablo
  */
-public class CreditoServlet extends HttpServlet {
+public class AddCreditoServlet extends HttpServlet {
 
     @EJB
     private CreditoDAOLocal creditoDAO;
