@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigDecimal;
 
 /**
  *
@@ -44,7 +45,7 @@ public class Credito implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "monto_inicial")
-    private double montoInicial;
+    private BigDecimal montoInicial;
     @Basic(optional = false)
     @NotNull
     @Column(name = "plazo_meses")
@@ -61,14 +62,14 @@ public class Credito implements Serializable {
         this.idCredito = idCredito;
     }
 
-    public Credito(String nombreCliente, double montoInicial, int plazoMeses, float tasaInteres) {
+    public Credito(String nombreCliente, BigDecimal montoInicial, int plazoMeses, float tasaInteres) {
         this.nombreCliente = nombreCliente;
         this.montoInicial = montoInicial;
         this.plazoMeses = plazoMeses;
         this.tasaInteres = tasaInteres;
     }
     
-    public Credito(Integer idCredito, String nombreCliente, double montoInicial, int plazoMeses, float tasaInteres) {
+    public Credito(Integer idCredito, String nombreCliente, BigDecimal montoInicial, int plazoMeses, float tasaInteres) {
         this.idCredito = idCredito;
         this.nombreCliente = nombreCliente;
         this.montoInicial = montoInicial;
@@ -92,11 +93,11 @@ public class Credito implements Serializable {
         this.nombreCliente = nombreCliente;
     }
 
-    public double getMontoInicial() {
+    public BigDecimal getMontoInicial() {
         return montoInicial;
     }
 
-    public void setMontoInicial(double montoInicial) {
+    public void setMontoInicial(BigDecimal montoInicial) {
         this.montoInicial = montoInicial;
     }
 

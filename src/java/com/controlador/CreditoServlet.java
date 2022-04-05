@@ -8,6 +8,7 @@ package com.controlador;
 import com.dao.CreditoDAOLocal;
 import com.modelo.Credito;
 import java.io.IOException;
+import java.math.BigDecimal;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -42,16 +43,48 @@ public class CreditoServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String nombreCliente = request.getParameter("nombreCliente");
+
         String montoInicialStr = request.getParameter("montoInicial");
-        double montoInicial = 0.0;
+        BigDecimal montoInicial = new BigDecimal(0);
         if (montoInicialStr != null && !montoInicialStr.equals("")) {
-            montoInicial = Double.parseDouble(montoInicialStr);
+            montoInicial = new BigDecimal(montoInicialStr);
         }
 
         String plazoMesesStr = request.getParameter("plazoMeses");
         int plazoMeses = 0;
         if (plazoMesesStr != null && !plazoMesesStr.equals("")) {
-            plazoMeses = Integer.parseInt(montoInicialStr);
+            plazoMeses = Integer.parseInt(plazoMesesStr);
+        }
+
+        String tasaInteresStr = request.getParameter("tasaInteres");
+        float tasaInteres = 0;
+        if (tasaInteresStr != null && !tasaInteresStr.equals("")) {
+            tasaInteres = Float.parseFloat(tasaInteresStr);
+        }
+        Credito credito = new Credito(nombreCliente, montoInicial, plazoMeses, tasaInteres);
+
+        return credito;
+    }
+
+    private Credito editarCreditoDesdeFormulario(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        response.setContentType("text/html;charset=UTF-8");
+
+        String idCreditoStr = request.getParameter("idCredito");
+        int idCredito = Integer.parseInt(idCreditoStr);
+
+        String nombreCliente = request.getParameter("nombreCliente");
+        String montoInicialStr = request.getParameter("montoInicial");
+        BigDecimal montoInicial = new BigDecimal(0);
+        if (montoInicialStr != null && !montoInicialStr.equals("")) {
+            montoInicial = new BigDecimal(montoInicialStr);
+        }
+
+        String plazoMesesStr = request.getParameter("plazoMeses");
+        int plazoMeses = 0;
+        if (plazoMesesStr != null && !plazoMesesStr.equals("")) {
+            plazoMeses = Integer.parseInt(plazoMesesStr);
         }
 
         String tasaInteresStr = request.getParameter("tasaInteres");
@@ -60,7 +93,8 @@ public class CreditoServlet extends HttpServlet {
             tasaInteres = Float.parseFloat(tasaInteresStr);
         }
 
-        Credito credito = new Credito(nombreCliente, montoInicial, plazoMeses, tasaInteres);
+        Credito credito = new Credito(idCredito, nombreCliente, montoInicial, plazoMeses, tasaInteres);
+
         return credito;
     }
 
@@ -94,7 +128,7 @@ public class CreditoServlet extends HttpServlet {
             request.setAttribute("credito", credito);
             ruta = vistaEditarCredito;
         } else if ("Actualizar".equalsIgnoreCase(action)) {
-            Credito credito = crearCreditoDesdeFormulario(request, response);
+            Credito credito = editarCreditoDesdeFormulario(request, response);
             creditoDAO.editCredito(credito);
             ruta = index;
         } else if ("Eliminar".equalsIgnoreCase(action)) {
