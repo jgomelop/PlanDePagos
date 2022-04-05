@@ -57,11 +57,13 @@ public class CreditoServlet extends HttpServlet {
             plazoMeses = Integer.parseInt(plazoMesesStr);
         }
 
+        /**
         String tasaInteresStr = request.getParameter("tasaInteres");
         float tasaInteres = 0;
         if (tasaInteresStr != null && !tasaInteresStr.equals("")) {
             tasaInteres = Float.parseFloat(tasaInteresStr);
-        }
+        }*/
+        float tasaInteres = (float) 1.1; // Tasa fija por requerimiento de negocio.
         Credito credito = new Credito(nombreCliente, montoInicial, plazoMeses, tasaInteres);
 
         return credito;
@@ -87,13 +89,17 @@ public class CreditoServlet extends HttpServlet {
         if (plazoMesesStr != null && !plazoMesesStr.equals("")) {
             plazoMeses = Integer.parseInt(plazoMesesStr);
         }
-
+        
+        // Por si se quiere trabajar con otra tasa de interés.
+        /**
         String tasaInteresStr = request.getParameter("tasaInteres");
         float tasaInteres = 0;
         if (tasaInteresStr != null && !tasaInteresStr.equals("")) {
             tasaInteres = Float.parseFloat(tasaInteresStr);
-        }
+        } */
 
+        float tasaInteres = (float) 1.1; // Tasa fija por requerimiento de negocio.
+        
         Credito credito = new Credito(idCredito, nombreCliente, montoInicial, plazoMeses, tasaInteres);
 
         return credito;
