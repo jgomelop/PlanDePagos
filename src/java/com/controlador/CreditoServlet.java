@@ -118,9 +118,16 @@ public class CreditoServlet extends HttpServlet {
             Credito credito = crearCreditoDesdeFormulario(request, response);
             creditoDAO.addCredito(credito);
             request.setAttribute("credito", credito);
-            ruta = index; // para quedarse en la misma página.
+            ruta = index; 
         } else if ("Agregar".equalsIgnoreCase(action)) {
             ruta = vistaCrearCredito;
+        } else if ("Detalles".equalsIgnoreCase(action)) {
+            String creditoIdStr = request.getParameter("credIdToDetail");
+            int creditoId = Integer.parseInt(creditoIdStr);
+            Credito credito = creditoDAO.getCredito(creditoId);
+            request.setAttribute("credito", credito );
+            ruta = vistaPlanDePago;
+            
         } else if ("Editar".equalsIgnoreCase(action)) {
             String creditoIdStr = request.getParameter("credIdToEdit");
             int creditoId = Integer.parseInt(creditoIdStr);

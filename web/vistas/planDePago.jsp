@@ -40,7 +40,9 @@
                 </tr>
             </tbody>
         </table>
-                
-                
-</body>
+
+        <form action="${pageContext.request.contextPath}/CreditoServlet" method="post">
+            <input type="submit" name="action" value="Regresar" />
+        </form>
+    </body>
 </html>

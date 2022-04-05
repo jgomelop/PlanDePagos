@@ -35,7 +35,10 @@
                     <td>${cred.plazoMeses}</td>
                     <td>${cred.tasaInteres} </td>
                     <td> 
-                        <a href="#"> Detalles </a>
+                        <form action="${pageContext.request.contextPath}/CreditoServlet" method="get">
+                            <input type="submit" name="action" value="Detalles" />
+                            <input type="hidden" name="credIdToDetail" value="${cred.idCredito}" />
+                        </form>
                         <form action="${pageContext.request.contextPath}/CreditoServlet" method="get">
                             <input type="submit" name="action" value="Editar" />
                             <input type="hidden" name="credIdToEdit" value="${cred.idCredito}" />
