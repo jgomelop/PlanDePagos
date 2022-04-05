@@ -28,21 +28,24 @@
                 </tr>
                 <tr>
                     <td> Monto Inicial</td>
-                    <td>&nbsp;${credito.montoInicial}</td>
+                    <td id="monto_inicial">&nbsp;${credito.montoInicial}</td>
                 </tr>
                 <tr>
                     <td> Plazo Meses</td>
-                    <td>&nbsp;${credito.plazoMeses}</td>
+                    <td id="plazo_meses">&nbsp;${credito.plazoMeses}</td>
                 </tr>
                 <tr>
                     <td> Tasa Interes</td>
-                    <td>&nbsp;${credito.tasaInteres}</td>
+                    <td id="tasa_interes">&nbsp;${credito.tasaInteres}</td>
                 </tr>
             </tbody>
         </table>
 
+        <div id="resultado"></div>
+
         <form action="${pageContext.request.contextPath}/CreditoServlet" method="post">
             <input type="submit" name="action" value="Regresar" />
         </form>
+            <script src="generarPlanDePagos.js"></script>
     </body>
 </html>
