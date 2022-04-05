@@ -10,45 +10,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Información Credito</title>
+        <title>Información de créditos</title>
     </head>
     <body>
-        <h1>Información Credito</h1>
-        <form action="${pageContext.request.contextPath}/CreditoServlet" method="GET">
-            <table>
-                <tr>
-                    <th> Credito ID</th>
-                    <th><input type="text" name="idCredito" value="${credito.idCredito}"/> </th>
-                </tr>
-                <tr>
-                    <th> Nombre Cliente</th>
-                    <th> <input type="text" name="nombreCliente" value="${credito.nombreCliente}"/></th>
-                </tr>
-                <tr>
-                    <th> Monto Inicial</th>
-                    <th><input type="text" name="montoInicial" value="${credito.montoInicial}"/> </th>
-                </tr>
-                <tr>
-                    <th> Plazo Meses</th>
-                    <th> <input type="text" name="plazoMeses" value="${credito.plazoMeses}"/></th>
-                </tr>
-                <tr>
-                    <th> Tasa Interes</th>
-                    <th> <input type="text" name="tasaInteres" value="${credito.tasaInteres}"/></th>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="submit" name="action" value="Add"/>
-                        <input type="submit" name="action" value="Edit"/>
-                        <input type="submit" name="action" value="Delete"/>
-                        <input type="submit" name="action" value="Search"/>
-                    </td>
-                </tr>
-
-            </table>
+        <h1>Información de créditos</h1>
+        
+        <form action="${pageContext.request.contextPath}/CreditoServlet" method="get">
+            <input type="submit" name="action" value="Agregar" />
         </form>
-        <br>
-
         <table border="1">
             <th>Credito Id</th>
             <th>Nombre Cliente</th>
@@ -67,7 +36,10 @@
                     <td>${cred.tasaInteres} </td>
                     <td> 
                         <a href="#"> Detalles </a>
-                        <a href="#"> Editar </a> 
+                        <form action="${pageContext.request.contextPath}/CreditoServlet" method="get">
+                            <input type="submit" name="action" value="Editar" />
+                            <input type="hidden" name="credIdToEdit" value="${cred.idCredito}" />
+                        </form>
                         <form action="${pageContext.request.contextPath}/CreditoServlet" method="get">
                             <input type="submit" name="action" value="Eliminar" />
                             <input type="hidden" name="credIdToDelete" value="${cred.idCredito}" />

@@ -25,21 +25,25 @@ public class CreditoServlet extends HttpServlet {
 
     String vistaEditarCredito = "vistas/editarCredito.jsp";
     String vistaPlanDePago = "vistas/planDePago.jsp";
-    
+    String vistaCrearCredito = "vistas/crearCredito.jsp";
+    String index = "index.jsp";
+
     /**
-     * 
+     *
      * @param request
      * @param response
      * @return Instancia de la clase Credito
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs 
+     * @throws IOException if an I/O error occurs
      */
     private Credito crearCreditoDesdeFormulario(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
+        response.setContentType("text/html;charset=UTF-8");
+
         String nombreCliente = request.getParameter("nombreCliente");
         String montoInicialStr = request.getParameter("montoInicial");
-        double montoInicial = 0;
+        double montoInicial = 0.0;
         if (montoInicialStr != null && !montoInicialStr.equals("")) {
             montoInicial = Double.parseDouble(montoInicialStr);
         }
@@ -55,7 +59,7 @@ public class CreditoServlet extends HttpServlet {
         if (tasaInteresStr != null && !tasaInteresStr.equals("")) {
             tasaInteres = Float.parseFloat(tasaInteresStr);
         }
-        
+
         Credito credito = new Credito(nombreCliente, montoInicial, plazoMeses, tasaInteres);
         return credito;
     }
@@ -73,28 +77,40 @@ public class CreditoServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        Credito credito = crearCreditoDesdeFormulario(request, response);
-        String action=request.getParameter("action");
-        if ("Add".equalsIgnoreCase(action)) {
+        String ruta = index;
+        String action = request.getParameter("action");
+
+        if ("Crear".equalsIgnoreCase(action)) {
+            Credito credito = crearCreditoDesdeFormulario(request, response);
             creditoDAO.addCredito(credito);
-
-        } else if ("Edit".equalsIgnoreCase(action)) {
-            creditoDAO.editCredito(credito); 
-
+            request.setAttribute("credito", credito);
+            ruta = index; // para quedarse en la misma página.
+        } else if ("Agregar".equalsIgnoreCase(action)) {
+            ruta = vistaCrearCredito;
+        } else if ("Editar".equalsIgnoreCase(action)) {
+            String creditoIdStr = request.getParameter("credIdToEdit");
+            int creditoId = Integer.parseInt(creditoIdStr);
+            Credito credito = creditoDAO.getCredito(creditoId);
+            request.setAttribute("credito", credito);
+            ruta = vistaEditarCredito;
+        } else if ("Actualizar".equalsIgnoreCase(action)) {
+            Credito credito = crearCreditoDesdeFormulario(request, response);
+            creditoDAO.editCredito(credito);
+            ruta = index;
         } else if ("Eliminar".equalsIgnoreCase(action)) {
-            
             String creditoIdStr = request.getParameter("credIdToDelete");
             int creditoId = Integer.parseInt(creditoIdStr);
             creditoDAO.deleteCredito(creditoId);
+            ruta = index;
 
-        } else if ("Search".equalsIgnoreCase(action)) {
-            credito = creditoDAO.getCredito(credito.getIdCredito());
+        } else if ("Regresar".equalsIgnoreCase(action)) {
+            ruta = index;
         }
 
-        request.setAttribute("credito", credito);
-        request.setAttribute("allCreditos", creditoDAO.getAllCreditos());
-        request.getRequestDispatcher("index.jsp").forward(request, response);
-
+        if (ruta.equalsIgnoreCase(index)) {
+            request.setAttribute("allCreditos", creditoDAO.getAllCreditos());
+        }
+        request.getRequestDispatcher(ruta).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

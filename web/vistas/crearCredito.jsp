@@ -1,6 +1,6 @@
 <%-- 
-    Document   : editarCredito
-    Created on : 3/04/2022, 11:06:06 PM
+    Document   : crearCredito
+    Created on : 4/04/2022, 06:39:49 PM
     Author     : Juan Pablo
 --%>
 
@@ -9,17 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Editar Credito</title>
-        
+        <title>Crear Credito</title>
     </head>
     <body>
-        <h1>Editar Credito</h1>
+        <h1>Crear Crédito</h1>
         <form action="${pageContext.request.contextPath}/CreditoServlet" method="GET">
             <table>
-                <tr>
-                    <th> Credito ID</th>
-                    <th><input type="text" name="idCredito" value="${credito.idCredito}" readonly/> </th>
-                </tr>
                 <tr>
                     <th> Nombre Cliente</th>
                     <th> <input type="text" name="nombreCliente" value="${credito.nombreCliente}"/></th>
@@ -37,7 +32,7 @@
                     <th> <input type="text" name="tasaInteres" value="${credito.tasaInteres}"/></th>
                 </tr>
                 <tr>
-                    <td><input type="submit" name="action" value="Actualizar"/></td>
+                    <td><input type="submit" name="action" value="Crear"/></td>
                     <td><input type="submit" name="action" value="Regresar"/></td>
                 </tr>
 
