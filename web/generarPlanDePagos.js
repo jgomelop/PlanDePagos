@@ -11,7 +11,7 @@ let interes = parseFloat(document.getElementById ( "tasa_interes" ).innerText);
 const resultado = document.getElementById("resultado");
 
 // hacemos los calculos...
-interes = (interes / 100) / 12;
+interes = (interes / 100);
 const m = (deuda * interes * (Math.pow((1 + interes), (meses)))) / ((Math.pow((1 + interes), (meses))) - 1);
 
 resultado.innerHTML = "<div>Capital Inicial:  $ " + deuda.toLocaleString("es-CO", {minimumFractionDigits: 2, maximumFractionDigits: 2}) + "\

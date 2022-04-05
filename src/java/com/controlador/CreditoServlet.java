@@ -29,6 +29,7 @@ public class CreditoServlet extends HttpServlet {
     String vistaCrearCredito = "vistas/crearCredito.jsp";
     String index = "index.jsp";
 
+    
     /**
      *
      * @param request
