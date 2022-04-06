@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : 3/04/2022, 07:19:45 PM
-    Author     : Juan Pablo
+    Author     : Juan Pablo Gómez López
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

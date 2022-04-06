@@ -1,7 +1,7 @@
 <%-- 
     Document   : planDePago
     Created on : 3/04/2022, 11:07:09 PM
-    Author     : Juan Pablo
+    Author     : Juan Pablo Gómez López
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

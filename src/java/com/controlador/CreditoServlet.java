@@ -24,6 +24,7 @@ public class CreditoServlet extends HttpServlet {
     @EJB
     private CreditoDAOLocal creditoDAO;
 
+    // Definimos las ritas de las vistas.
     String vistaEditarCredito = "vistas/editarCredito.jsp";
     String vistaPlanDePago = "vistas/planDePago.jsp";
     String vistaCrearCredito = "vistas/crearCredito.jsp";
@@ -31,7 +32,8 @@ public class CreditoServlet extends HttpServlet {
 
     
     /**
-     *
+     * Método auxiliar para la creación de una instancia de la clase Credito,
+     * que se usará para procesar el Request.
      * @param request
      * @param response
      * @return Instancia de la clase Credito
@@ -69,6 +71,15 @@ public class CreditoServlet extends HttpServlet {
         return credito;
     }
 
+    /**
+     * Método auxiliar para la edición de una instancia de la clase Credito,
+     * que se usará para procesar el Request.
+     * @param request
+     * @param response
+     * @return Instancia de la clase Credito.
+     * @throws ServletException
+     * @throws IOException 
+     */
     private Credito editarCreditoDesdeFormulario(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -118,7 +129,7 @@ public class CreditoServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String ruta = index;
+        String ruta = index; // vista por default
         String action = request.getParameter("action");
 
         if ("Crear".equalsIgnoreCase(action)) {

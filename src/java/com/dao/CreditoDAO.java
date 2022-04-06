@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Juan Pablo
+ * @author Juan Pablo Gómez López
  */
 @Stateless
 public class CreditoDAO implements CreditoDAOLocal {

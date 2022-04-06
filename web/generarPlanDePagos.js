@@ -1,10 +1,10 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *Código basado de:
+ * https://www.lawebdelprogramador.com/codigo/JavaScript/5332-Calculo-de-hipotecas-prestamos.html
+ * Créditos al autor.
  */
 
-
+// Obtenemos los valores desde la vista planDePagos.
 let deuda = parseFloat(document.getElementById ( "monto_inicial" ).innerText);
 let meses = parseInt(document.getElementById ( "plazo_meses" ).innerText);
 let interes = parseFloat(document.getElementById ( "tasa_interes" ).innerText);
