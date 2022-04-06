@@ -10,42 +10,51 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <title>Plan de pago</title>
     </head>
     <body>
-        <h1>Plan de pago de crédito</h1>
-        <h2>Información básica</h2>
 
-        <table>
-            <tbody>
-                <tr>
-                    <td> Credito ID</td>
-                    <td>&nbsp;${credito.idCredito}</td>
-                </tr>
-                <tr>
-                    <td> Nombre Cliente</td>
-                    <td>&nbsp;${credito.nombreCliente}</td>
-                </tr>
-                <tr>
-                    <td> Monto Inicial</td>
-                    <td id="monto_inicial">&nbsp;${credito.montoInicial}</td>
-                </tr>
-                <tr>
-                    <td> Plazo Meses</td>
-                    <td id="plazo_meses">&nbsp;${credito.plazoMeses}</td>
-                </tr>
-                <tr>
-                    <td> Tasa Interes</td>
-                    <td id="tasa_interes">&nbsp;${credito.tasaInteres}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="container w-50 mt-3 mb-5">
 
-        <div id="resultado"></div>
+            <h1 class="mb-0">Plan de pago de crédito</h1>
+            <br>
+            <h2 class="mb-0">Información básica</h2>
+            <br>
+            <table class="table table-striped table-bordered mb-0">
+                <tbody>
+                    <tr>
+                        <td> Credito ID</td>
+                        <td>&nbsp;${credito.idCredito}</td>
+                    </tr>
+                    <tr>
+                        <td> Nombre Cliente</td>
+                        <td>&nbsp;${credito.nombreCliente}</td>
+                    </tr>
+                    <tr>
+                        <td> Monto Inicial</td>
+                        <td id="monto_inicial">&nbsp;${credito.montoInicial}</td>
+                    </tr>
+                    <tr>
+                        <td> Plazo Meses</td>
+                        <td id="plazo_meses">&nbsp;${credito.plazoMeses}</td>
+                    </tr>
+                    <tr>
+                        <td> Tasa Interes</td>
+                        <td id="tasa_interes">&nbsp;${credito.tasaInteres}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <h2 class="mb-0">Plan de Pagos</h2>
+            <br>
+            <div class="container px-0" id="resultado"></div>
+            <br>
+            <form action="${pageContext.request.contextPath}/CreditoServlet" method="post">
+                <input class="mt-0 btn btn-secondary" type="submit" name="action" value="Regresar" />
+            </form>
 
-        <form action="${pageContext.request.contextPath}/CreditoServlet" method="post">
-            <input type="submit" name="action" value="Regresar" />
-        </form>
-            <script src="generarPlanDePagos.js"></script>
+        </div>
+        <script src="generarPlanDePagos.js"></script>
     </body>
 </html>

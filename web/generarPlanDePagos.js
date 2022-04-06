@@ -22,6 +22,7 @@ const table = document.createElement("table");
 table.setAttribute("border", 1);
 table.setAttribute("cellpadding", 5);
 table.setAttribute("cellspacing", 0);
+table.setAttribute("class","table table-striped table-bordered");
 
 // titulo de la tabla
 let tr = document.createElement("tr");
@@ -44,11 +45,11 @@ for (let i = 1; i <= meses; i++) {
     td.appendChild(txt);
     tr.appendChild(td);
     td = document.createElement("td");
-    txt = document.createTextNode((deuda * interes).toLocaleString("es-ES", {minimumFractionDigits: 2, maximumFractionDigits: 2}));
+    txt = document.createTextNode((deuda * interes).toLocaleString("es-CO", {minimumFractionDigits: 2, maximumFractionDigits: 2}));
     td.appendChild(txt);
     tr.appendChild(td);
     td = document.createElement("td");
-    txt = document.createTextNode((m - (deuda * interes)).toLocaleString("es-ES", {minimumFractionDigits: 2, maximumFractionDigits: 2}));
+    txt = document.createTextNode((m - (deuda * interes)).toLocaleString("es-CO", {minimumFractionDigits: 2, maximumFractionDigits: 2}));
     td.appendChild(txt);
     tr.appendChild(td);
     deuda = deuda - (m - (deuda * interes));
