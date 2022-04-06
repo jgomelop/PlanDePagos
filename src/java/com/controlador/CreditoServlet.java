@@ -25,10 +25,10 @@ public class CreditoServlet extends HttpServlet {
     private CreditoDAOLocal creditoDAO;
 
     // Definimos las ritas de las vistas.
-    String vistaEditarCredito = "vistas/editarCredito.jsp";
-    String vistaPlanDePago = "vistas/planDePago.jsp";
-    String vistaCrearCredito = "vistas/crearCredito.jsp";
-    String index = "index.jsp";
+    private final String vistaEditarCredito = "vistas/editarCredito.jsp";
+    private final String vistaPlanDePago = "vistas/planDePago.jsp";
+    private final String vistaCrearCredito = "vistas/crearCredito.jsp";
+    private final String index = "index.jsp";
 
     
     /**
