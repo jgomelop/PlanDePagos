@@ -1,0 +1,11 @@
+CREATE DATABASE control_creditos;
+USE control_creditos;
+
+CREATE TABLE credito (
+    id_credito INT NOT NULL AUTO_INCREMENT,
+    nombre_cliente varchar(255) NOT NULL,
+    monto_inicial numeric(19,4) NOT NULL,
+    plazo_meses INT NOT NULL,
+    tasa_interes FLOAT NOT NULL,
+    PRIMARY KEY(id_credito)
+);
