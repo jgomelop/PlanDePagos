@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,7 +26,7 @@
                 <th>Nombre Cliente</th>
                 <th>Monto Inicial</th>
                 <th>Plazo Meses</th>
-                <th> Tasa Interes </th>
+                <th> Tasa Interes (%) </th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -34,9 +35,10 @@
                     <tr>
                         <td>${cred.idCredito}</td>
                         <td>${cred.nombreCliente}</td>
-                        <td>${cred.montoInicial}</td>
+                        <fmt:setLocale value="es_CO"/>
+                        <td><fmt:formatNumber type="number" pattern="#,###.##" maxFractionDigits = "2" value="${cred.montoInicial}" /></td>
                         <td>${cred.plazoMeses}</td>
-                        <td>${cred.tasaInteres} </td>
+                        <td>${cred.tasaInteres}</td>
                         <td class="text-center"> 
                             <form action="${pageContext.request.contextPath}/CreditoServlet" method="POST">
                                 <input class="btn btn-success"type="submit" name="action" value="Detalles" />
